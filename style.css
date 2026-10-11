@@ -1,0 +1,129 @@
+/* Basic page setup */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f6f9;
+    color: #263238;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #176b68;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+/* Main content */
+main {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+section {
+    background-color: white;
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    color: #176b68;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd5d8;
+    border-radius: 6px;
+    font: inherit;
+}
+
+button {
+    margin-top: 14px;
+    padding: 11px 18px;
+    background-color: #176b68;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #104e4c;
+}
+
+button:disabled {
+    background-color: #9eaeae;
+    cursor: not-allowed;
+}
+
+/* Status messages */
+#status {
+    padding: 10px;
+    border-radius: 6px;
+}
+
+#status.success {
+    color: #176b35;
+    background-color: #e4f5e9;
+}
+
+#status.error {
+    color: #a32121;
+    background-color: #fde8e8;
+}
+
+/* Notes list */
+#notes-list {
+    padding-left: 20px;
+}
+
+#notes-list li {
+    background-color: #f8fafb;
+    border: 1px solid #dce3e6;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+#notes-list li p {
+    margin-bottom: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #52636a;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    main {
+        margin: 15px auto;
+        padding: 0 12px;
+    }
+
+    section {
+        padding: 16px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
