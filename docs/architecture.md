@@ -141,3 +141,28 @@ A relational database provides transactions, constraints, and clear relationship
 ## 8. Conclusion
 
 The proposed architecture separates static content delivery, request routing, application logic, caching, persistent storage, and background processing. This supports incremental scaling and resilience while keeping the initial design understandable. The correct capacity and technology choices should be validated through monitoring and load testing.
+
+## Capacity estimates (1 million users)
+
+### Assumptions
+- 1,000,000 registered users, 20% active each day, so 200,000 daily active users.
+- Each active user creates 5 notes and views the notes list 20 times per day.
+- An average note is about 1 KB including metadata.
+- A day has 86,400 seconds. Peak traffic is 5 times the average.
+
+### Writes per second
+- Writes per day: 200,000 × 5 = 1,000,000.
+- Average: 1,000,000 ÷ 86,400 ≈ 12 writes per second.
+- Peak (×5): ≈ 58 writes per second.
+
+### Reads per second
+- Reads per day: 200,000 × 20 = 4,000,000.
+- Average: 4,000,000 ÷ 86,400 ≈ 46 reads per second.
+- Peak (×5): ≈ 230 reads per second.
+
+### Storage per year
+- Per day: 1,000,000 notes × 1 KB = 1 GB.
+- Per year: 1 GB × 365 ≈ 365 GB. With tags and indexes (about 2×), plan for roughly 750 GB.
+
+### What this means
+The system is **read-heavy**, with about 4 reads for every write. At 230 reads per second at peak, one PostgreSQL primary with a read replica and a cache is enough. Storage grows by under 1 TB a year, so a single database can last for years before it needs splitting.
